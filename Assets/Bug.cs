@@ -9,6 +9,8 @@ public class Bug
     public static double CENTER_FACTOR = .01;
     public static double NEIGHBOR_RANGE = 1;
     public static double VELOCITY_MATCH_FACTOR = 2;
+    public static double SPEED_LIMIT = 2;
+    public static double TEND_FACTOR = .01
 
     public Bug(int id, Point p)
     {
@@ -59,5 +61,18 @@ public class Bug
         }
         c = c.divide(SwarmController.swarm.Count - 1);
         return c.subtract(velocity).divide(VELOCITY_MATCH_FACTOR);
+    }
+
+    public void LimitVelocity()
+    {
+        if (velocity.distanceTo(new Point()) > SPEED_LIMIT)
+        {
+            velocity = velocity.divide(velocity.distanceTo(new Point())).multiply(SPEED_LIMIT)
+        }
+    }
+
+    public Point TendToPlace(Point place)
+    {
+        return p.subtract(place).multiply(TEND_FACTOR)
     }
 }

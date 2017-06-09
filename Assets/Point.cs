@@ -37,4 +37,9 @@ public class Point
     {
         return new Point(this.x - p.x, this.y - p.y, this.z - p.z);
     }
+
+    public Point multiply(double n):
+    {
+        return new Point(this.x * p.x, this.y * p.y, this.z * p.z);
+    }
 }
